@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Reference App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #121212; color: white; }
+    .search-bar { padding: 1rem; }
+    input[type="text"] {
+      width: 90%; padding: 0.5rem; font-size: 1rem; border-radius: 5px; border: none;
+    }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; padding: 1rem; }
+    .gallery img { width: 100%; height: auto; border-radius: 8px; }
+    .image-item { text-align: center; }
+    .image-title { margin-top: 0.5rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." onkeyup="searchImages(event)" />
+  </div>
+  <div class="gallery" id="gallery">
+    <div class="image-item"><img src="images/hypochock2.png"><div class="image-title">Nutrition</div></div>
+    <div class="image-item"><img src="images/k_machine.png"><div class="image-title">Potassium</div></div>
+    <div class="image-item"><img src="images/aco_progression.png"><div class="image-title">ACS Timeline</div></div>
+    <div class="image-item"><img src="images/sgarbossa.png"><div class="image-title">Sgarbossa Criteria</div></div>
+    <div class="image-item"><img src="images/tachycardia.png"><div class="image-title">Tachycardia Types</div></div>
+    <div class="image-item"><img src="images/toxidromes.png"><div class="image-title">Toxidromes</div></div>
+    <div class="image-item"><img src="images/ecg_phenotypes.png"><div class="image-title">ECG Phenotypes</div></div>
+    <div class="image-item"><img src="images/anion_gap.png"><div class="image-title">Anion Gap</div></div>
+    <div class="image-item"><img src="images/wells_score.jpg"><div class="image-title">Wells Score</div></div>
+  </div>
+  <script>
+    function searchImages(event) {
+      const search = event.target.value.toLowerCase();
+      const items = document.querySelectorAll(".image-item");
+      items.forEach(item => {
+        const title = item.querySelector(".image-title").textContent.toLowerCase();
+        item.style.display = title.includes(search) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
